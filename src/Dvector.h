@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <iomanip>
+#include <fstream>
 using namespace std ;
 
 class Dvector
