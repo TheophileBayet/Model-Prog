@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <iomanip>
+#include <assert.h>
 #include <fstream>
 #include <string>
 using namespace std ;
@@ -19,11 +20,10 @@ class Dvector
       ~Dvector();
       Dvector(std::string &file);
 
-      double operator () (int i)
+      double operator () (int i) const
       {
-        if (i>=0 && i<dim){
-          return vect[i];
-        }
+        assert(i>=0 && i<dim);
+        return vect[i];
       }
 
       void display(std::ostream& str)
@@ -82,6 +82,36 @@ class Dvector
       for (int i=0; i< dim; i++)
       {
         V->vect[i] = vect[i] / n;
+      }
+      return *V;
+    }
+
+    Dvector operator +(Dvector vector)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = vect[i] + vector.vect[i];
+      }
+      return *V;
+    }
+
+    Dvector operator -(Dvector vector)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = vect[i] - vector.vect[i];
+      }
+      return *V;
+    }
+
+    Dvector operator -()
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = - vect[i];
       }
       return *V;
     }
