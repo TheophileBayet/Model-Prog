@@ -4,7 +4,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <iomanip>
-using namespace std ;
 
 class Dvector
 {
@@ -16,11 +15,20 @@ class Dvector
       Dvector(int dim);
       Dvector(int dim, double init);
       ~Dvector();
+      Dvector(std::string);
+      
+      double operator () (int i)
+      {
+        if (i>=0 && i<dim){
+          return vect[i];
+        }
+      }
 
       void display(std::ostream& str)
       {
-        for(int i=0;i<dim;i++) str<<fixed<<setprecision(5)<<vect[i]<<endl;
-        str.flush();
+        for(int i=0;i<dim;i++){
+          std::cout << vect[i] << std::endl;
+        }
       }
 
       int size()
@@ -30,7 +38,50 @@ class Dvector
 
       void fillRandomly()
       {
-        for(int i=0;i<dim;i++) vect[i]=rand() ;
+        srand(time(NULL));
+        for(int i=0;i<dim;i++){
+          vect[i]=rand()/RAND_MAX ;
+        }
       }
+
+    Dvector operator +(int n)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = vect[i] + n;
+      }
+      return *V;
+    }
+
+    Dvector operator -(int n)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = vect[i] - n;
+      }
+      return *V;
+    }
+
+    Dvector operator *(int n)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = vect[i] * n;
+      }
+      return *V;
+    }
+
+    Dvector operator /(int n)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = vect[i] / n;
+      }
+      return *V;
+    }
 };
 #endif
