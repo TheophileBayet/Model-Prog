@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <iomanip>
 #include <fstream>
+#include <string>
 using namespace std ;
 
 class Dvector
@@ -14,10 +15,9 @@ class Dvector
     double* vect;
   public :
       Dvector();
-      Dvector(int dim);
-      Dvector(int dim, double init);
+      Dvector(int dim, double init=0.0);
       ~Dvector();
-      Dvector(std::string);
+      Dvector(std::string &file);
 
       double operator () (int i)
       {
