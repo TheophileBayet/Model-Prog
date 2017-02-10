@@ -24,3 +24,8 @@ Dvector::~Dvector()
 {
   delete [] vect;
 }
+
+Dvector::Dvector(std::string)
+{
+  //TODO lecture dans un fichier
+}
