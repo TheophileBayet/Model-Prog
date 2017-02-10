@@ -28,6 +28,8 @@ Dvector::Dvector(std::string file)
     this->dim = i;
     this->vect = new double[dim];
     i =0;
+    fichier.clear();
+    fichier.seekg( pos,std::ios_base::beg ) ;
         while(getline(fichier, ligne))
         {
           double elt = atof(ligne.c_str());
@@ -36,7 +38,7 @@ Dvector::Dvector(std::string file)
         }
     fichier.close();
   }else{
-    cerr << " Impossible d'ouvrir le fichier : " << file << endl;
+    this->dim = 0;
   }
 }
 

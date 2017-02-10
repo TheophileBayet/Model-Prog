@@ -36,6 +36,28 @@ int main()
   Dvector *Q = new Dvector(test_name);
   assert(Q->size()==10);
   std::cout<<std::endl;
-  std::cout <<"     FileConstructor : OK      "<<std::endl;
+  std::cout <<"     File Constructor : OK      "<<std::endl;
+
+  stringstream yolo;
+  Q->display(yolo);
+  string yolo_name = "test/yolo.txt";
+  // Création d'un fichier dans lequel stocker le stream yolo :
+  fstream file(yolo_name.c_str());
+  if(file)
+  {
+      file << yolo.str() ;
+      file.close();
+  }
+
+  //std::cout << yolo.str(); // Verification de la valeur des double dans Q.
+  Dvector *R = new Dvector(yolo_name);
+  assert(R->size()==10);
+  std::cout<<std::endl;
+  std::cout <<"     Display puis constructor : OK      "<<std::endl;
+
+
+
+
+
   return 0;
 }
