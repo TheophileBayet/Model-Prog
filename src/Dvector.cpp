@@ -13,33 +13,34 @@ Dvector::Dvector(int dim, double init)
   for(int i=0;i<this->dim;i++) this->vect[i]=init;
 }
 
-Dvector::~Dvector()
-{
-  delete [] vect;
-}
-
-Dvector::Dvector(string &file)
+Dvector::Dvector(std::string file)
 {
   fstream fichier(file.c_str());
   if(fichier)
   {
     string ligne;
     long pos = fichier.tellg();
-    fichier.seekg( 0 , std::ios_base::end );
-    long size = fichier.tellg() ;
-    fichier.seekg( pos,  std::ios_base::beg ) ;
-    Dvector((int) size);
     int i =0;
+        while(getline(fichier, ligne))
+        {
+          i++;
+        }
+    this->dim = i;
+    this->vect = new double[dim];
+    i =0;
         while(getline(fichier, ligne))
         {
           double elt = atof(ligne.c_str());
           this->vect[i]=elt;
           i++;
         }
-
-
     fichier.close();
   }else{
-    cerr << " Impossible d'ouvrir le fichier" << file << endl;
+    cerr << " Impossible d'ouvrir le fichier : " << file << endl;
   }
+}
+
+Dvector::~Dvector()
+{
+  delete [] vect;
 }

@@ -16,9 +16,9 @@ class Dvector
     double* vect;
   public :
       Dvector();
+      Dvector(std::string);
       Dvector(int dim, double init=0.0);
       ~Dvector();
-      Dvector(std::string &file);
 
       double operator () (int i) const
       {
@@ -29,7 +29,7 @@ class Dvector
       void display(std::ostream& str)
       {
         for(int i=0;i<dim;i++){
-          std::cout << vect[i] << std::endl;
+          str << fixed << setprecision(5) << vect[i] << std::endl;
         }
       }
 
