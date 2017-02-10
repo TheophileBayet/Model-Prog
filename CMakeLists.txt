@@ -16,14 +16,41 @@ file(
 
 )
 
+file(
 
+        GLOB_RECURSE
 
-#Déclaration de l'exécutable
+        doc_files
+
+        doc/*
+
+)
+
+file(
+
+        GLOB_RECURSE
+
+        test_files
+
+        test/*
+
+)
+#Déclaration de l'exécutable du main de src
 
 add_executable(
 
-        my_exe
+        ./src/src_exe
 
         ${source_files}
+
+)
+
+add_executable(
+
+        ./test/test_exe
+
+        ${test_files}
+
+        ./src/Dvector.cpp
 
 )
