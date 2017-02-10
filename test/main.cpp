@@ -15,6 +15,7 @@ int main()
 
   Dvector *lolilol = new Dvector(3,2.00);
   Dvector *noInit = new Dvector(5);
+  Dvector P(3);
   assert(lolilol->size() == 3);
   assert(noInit->size()==5);
   std::cout<< "     Second Constructor : OK      "<<std::endl;

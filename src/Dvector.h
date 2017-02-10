@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <iomanip>
 #include <assert.h>
+#include <fstream>
+using namespace std ;
 
 class Dvector
 {
