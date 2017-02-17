@@ -185,7 +185,7 @@ class Dvector
       }
       return *V;
     }
-
+    /*
     Dvector operator =(Dvector vector)
     {
       Dvector *V = new Dvector(dim);
@@ -194,6 +194,6 @@ class Dvector
         V->vect[i] = vect[i];
       }
       return *V;
-    }
+    }*/
 };
 #endif

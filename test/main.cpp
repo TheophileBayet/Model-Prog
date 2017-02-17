@@ -130,6 +130,7 @@ try {
   std::cout << " Unary Operator - : OK" << std::endl;
   std::cout << std::endl; */
 
+  /*
   std::cout << "  standard binary operators tests :   "<< std::endl;
   std::cout << std::endl;
   Dvector Bin_Ope_Vect(3,3);
@@ -164,7 +165,7 @@ try {
 }
 
   std::cout << " Binary Operator - : OK" << std::endl;
-  std::cout << std::endl;
+  std::cout << std::endl; */
   std::cout << " Mais d'où vient ce petit doublre free ? " << std::endl;
 
   return 0;
