@@ -53,7 +53,7 @@ class Dvector
     {
       dim = P.dim;
       vect = new double[dim];
-      std::memcpy(vect,P.vect,dim*sizeof(double));
+      memcpy(vect,P.vect,dim*sizeof(double));
       return *this;
     }
 
@@ -97,14 +97,14 @@ class Dvector
       return *V;
     }
 
-    Dvector operator +(Dvector vector)
+    Dvector& operator +(const Dvector &vector)
     {
-      Dvector *V = new Dvector(dim);
+      static Dvector V = *this;
       for (int i=0; i< dim; i++)
       {
-        V->vect[i] = vect[i] + vector.vect[i];
+        V.vect[i] = vect[i] + vector.vect[i];
       }
-      return *V;
+      return V;
     }
 
     Dvector operator -(Dvector vector)
