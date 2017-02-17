@@ -57,49 +57,50 @@ class Dvector
       return *this;
     }
 
-    Dvector operator +(int n)
+    Dvector& operator +(int n)
     {
-      Dvector *V = new Dvector(dim);
+      static Dvector V(dim);
       for (int i=0; i< dim; i++)
       {
-        V->vect[i] = vect[i] + n;
+        V.vect[i] = vect[i] + n;
       }
-      return *V;
+      return V;
     }
 
-    Dvector operator -(int n)
+    Dvector& operator -(int n)
     {
-      Dvector *V = new Dvector(dim);
+      static Dvector V(dim);
       for (int i=0; i< dim; i++)
       {
-        V->vect[i] = vect[i] - n;
+        V.vect[i] = vect[i] - n;
       }
-      return *V;
+      return V;
     }
 
-    Dvector operator *(int n)
+    Dvector& operator *(int n)
     {
-      Dvector *V = new Dvector(dim);
+      static Dvector V(dim);;
       for (int i=0; i< dim; i++)
       {
-        V->vect[i] = vect[i] * n;
+        V.vect[i] = vect[i] * n;
       }
-      return *V;
+      return V;
     }
 
-    Dvector operator /(int n)
+    Dvector& operator /(int n)
     {
-      Dvector *V = new Dvector(dim);
+      static Dvector V(dim) ;
       for (int i=0; i< dim; i++)
       {
-        V->vect[i] = vect[i] / n;
+        V.vect[i] = vect[i] / n;
       }
-      return *V;
+      return V;
     }
 
     Dvector& operator +(const Dvector &vector)
     {
-      static Dvector V = *this;
+      static Dvector V(vector.dim);
+      V = *this;
       for (int i=0; i< dim; i++)
       {
         V.vect[i] = vect[i] + vector.vect[i];
@@ -107,27 +108,29 @@ class Dvector
       return V;
     }
 
-    Dvector operator -(Dvector vector)
+    Dvector& operator -(const Dvector &vector)
     {
-      Dvector *V = new Dvector(dim);
+      static Dvector V(dim);
+      V = *this;
       for (int i=0; i< dim; i++)
       {
-        V->vect[i] = vect[i] - vector.vect[i];
+        V.vect[i] = vect[i] - vector.vect[i];
       }
-      return *V;
+      return V;
     }
 
-    Dvector operator -()
+    Dvector& operator -()
     {
-      Dvector *V = new Dvector(dim);
+      static Dvector V(dim);
+      V =*this;
       for (int i=0; i< dim; i++)
       {
-        V->vect[i] = - vect[i];
+        V.vect[i] = - vect[i];
       }
-      return *V;
+      return V;
     }
 
-    void operator +=(Dvector vector)
+    void operator +=(Dvector &vector)
     {
       for (int i=0; i< dim; i++)
       {
@@ -135,7 +138,7 @@ class Dvector
       }
     }
 
-    void operator -=(Dvector vector)
+    void operator -=(Dvector &vector)
     {
       for (int i=0; i< dim; i++)
       {
@@ -164,24 +167,30 @@ class Dvector
       }
     }
 
-    Dvector operator << (int n)
+    Dvector& operator <<(int n)
     {
-      Dvector *V = new Dvector(dim);
-      for (int i=0; i< n; i++)
-      {
-        V->vect[i] = 2 * vect[i];
+      static Dvector V(dim);
+      V = *this;
+      for (int j=0;j<n;j++){
+        for (int i=0; i< dim; i++)
+        {
+          V.vect[i] = 2 * V.vect[i];
+        }
       }
-      return *V;
+      return V;
     }
 
-    Dvector operator >> (int n)
+    Dvector& operator >>(int n)
     {
-      Dvector *V = new Dvector(dim);
-      for (int i=0; i< n; i++)
-      {
-        V->vect[i] = vect[i] / 2;
+      static Dvector V(dim);
+      V = *this;
+      for (int j=0;j<n;j++){
+        for (int i=0; i< dim; i++)
+        {
+          V.vect[i] = V.vect[i] / 2;
+        }
       }
-      return *V;
+      return V;
     }
     /*
     Dvector operator =(Dvector vector)

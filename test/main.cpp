@@ -117,10 +117,10 @@ try {
   std::cout << " REAL Operator / : OK" << std::endl;
   std::cout << std::endl;
 
+  /*
   std::cout << "  standard unary operators tests :   "<< std::endl;
   std::cout << std::endl;
 
-/*
   try {
   *Test_Vect = Ope_Vect-() ;
   Test_Vect->display(std::cout);
@@ -128,10 +128,11 @@ try {
 } catch (int e){
   std::cout<< " ERROR WITH UNARY - OPERATOR : error number  "<<e<<"raised " << std::endl;
 }
-  std::cout << " Unary Operator - : OK" << std::endl;
-  std::cout << std::endl;*/
 
-  
+  std::cout << " Unary Operator - : OK" << std::endl;
+  std::cout << std::endl; */
+
+
   std::cout << "  standard binary operators tests :   "<< std::endl;
   std::cout << std::endl;
   Dvector Bin_Ope_Vect(3,3);
@@ -151,7 +152,7 @@ try {
 
   std::cout << " Binary Operator + : OK" << std::endl;
   std::cout << std::endl;
-  /*
+
   try {
   std::cout << " on soustraie : " << std::endl ;
   Ope_Vect.display(std::cout);
@@ -166,8 +167,85 @@ try {
 }
 
   std::cout << " Binary Operator - : OK" << std::endl;
+  std::cout << std::endl;
+
+  std::cout << " advanced operators tests :   "<< std::endl;
+  std::cout << std::endl;
+
+  try {
+  *Test_Vect = Ope_Vect>>(1) ;
+  assert((*Test_Vect)(2)==1);
+} catch (int e){
+  std::cout<< " ERROR WITH >> OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << " >> Operator : OK" << std::endl;
+  std::cout << std::endl;
+
+    try {
+  *Test_Vect = Ope_Vect<<(2) ;
+  assert((*Test_Vect)(2)==8);
+} catch (int e){
+  std::cout<< " ERROR WITH << OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << " << Operator : OK" << std::endl;
+  std::cout << std::endl;
+
+  try {
+  Ope_Vect+=(Bin_Ope_Vect) ;
+  assert(Ope_Vect(2)==5);
+} catch (int e){
+  std::cout<< " ERROR WITH += OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << "Operator += : OK" << std::endl;
+  std::cout << std::endl;
+
+    try {
+  Ope_Vect-=(Bin_Ope_Vect) ;
+  assert(Ope_Vect(2)==2);
+} catch (int e){
+  std::cout<< " ERROR WITH -= OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << "Operator -= : OK" << std::endl;
+  std::cout << std::endl;
+
+      try {
+  Ope_Vect*=(2) ;
+  assert(Ope_Vect(2)==4);
+} catch (int e){
+  std::cout<< " ERROR WITH *= OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << "Operator *= : OK" << std::endl;
+  std::cout << std::endl;
+
+      try {
+  Ope_Vect/=(2) ;
+  assert(Ope_Vect(2)==2);
+} catch (int e){
+  std::cout<< " ERROR WITH /= OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << "Operator /= : OK" << std::endl;
+  std::cout << std::endl;
+/*
+        try {
+  assert(!(Ope_Vect==(Bin_Ope_Vect)));
+  Ope_Vect = Ope_Vect+(1);
+  assert(Ope_Vect==(Bin_Ope_Vect));
+} catch (int e){
+  std::cout<< " ERROR WITH == OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << "Operator == : OK" << std::endl;
   std::cout << std::endl; */
-  std::cout << " Mais d'où vient ce petit doublre free ? " << std::endl;
+
+  std::cout << std::endl;
+  std::cout << " ### FIN DES TESTS ### " << std::endl;
+  std::cout << std::endl;
 
   return 0;
 }
