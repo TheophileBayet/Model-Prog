@@ -202,5 +202,27 @@ class Dvector
       }
       return *V;
     }*/
+
+    bool operator ==(Dvector vector)
+    {
+      bool res = true;
+      for (int i=0; i< dim; i++)
+      {
+        res &= (vect[i] == vector.vect[i]);
+      }
+      return res;
+    }
+
+    void resize (int taille, double val)
+    {
+      if (taille > dim){
+        realloc(vect,taille*sizeof(double));
+        for (int i = dim; i < taille; i++)
+        {
+          vect[i] = val;
+        }
+      }
+      dim = taille;
+    }
 };
 #endif
