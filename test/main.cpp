@@ -61,7 +61,7 @@ int main()
   std::cout <<"     Display then constructor : OK      "<<std::endl;
 
   std::cout<<std::endl;
-  std::cout << "#### TESTS DES OPERATEURS (TP 1)  ####"<<std::endl;
+  std::cout << "#### TESTS DES OPERATEURS (TP 2)  ####"<<std::endl;
   std::cout<<std::endl;
 
   std::cout << "  standard  real operators tests :   "<< std::endl;
@@ -75,9 +75,9 @@ int main()
   std::cout << std::endl;
 
   try {
-  *Test_Vect = Ope_Vect+(2) ;
+  *Test_Vect = Ope_Vect+(2.0) ;
   Test_Vect->display(std::cout);
-  assert((*Test_Vect)(2)==4);
+  assert((*Test_Vect)(2)==4.0);
 } catch (int e){
   std::cout<< " ERROR WITH REAL + OPERATOR : error number  "<<e<<"raised " << std::endl;
 }
@@ -119,7 +119,7 @@ try {
 
   std::cout << "  standard unary operators tests :   "<< std::endl;
   std::cout << std::endl;
-  /*
+/*
   try {
   *Test_Vect = Ope_Vect-() ;
   Test_Vect->display(std::cout);
@@ -128,12 +128,12 @@ try {
   std::cout<< " ERROR WITH UNARY - OPERATOR : error number  "<<e<<"raised " << std::endl;
 }
   std::cout << " Unary Operator - : OK" << std::endl;
-  std::cout << std::endl;
+  std::cout << std::endl; */
 
   std::cout << "  standard binary operators tests :   "<< std::endl;
   std::cout << std::endl;
   Dvector Bin_Ope_Vect(3,3);
-/*
+
   try {
   std::cout << " on aditionne : " << std::endl ;
   Ope_Vect.display(std::cout);
@@ -164,7 +164,7 @@ try {
 }
 
   std::cout << " Binary Operator - : OK" << std::endl;
-  std::cout << std::endl;*/
+  std::cout << std::endl;
   std::cout << " Mais d'où vient ce petit doublre free ? " << std::endl;
 
   return 0;
