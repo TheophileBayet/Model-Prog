@@ -231,17 +231,28 @@ try {
 
   std::cout << "Operator /= : OK" << std::endl;
   std::cout << std::endl;
-/*
-        try {
+
+  try {
   assert(!(Ope_Vect==(Bin_Ope_Vect)));
-  Ope_Vect = Ope_Vect+(1);
+  Bin_Ope_Vect = Bin_Ope_Vect-(1);
   assert(Ope_Vect==(Bin_Ope_Vect));
 } catch (int e){
   std::cout<< " ERROR WITH == OPERATOR : error number  "<<e<<"raised " << std::endl;
 }
 
   std::cout << "Operator == : OK" << std::endl;
-  std::cout << std::endl; */
+  std::cout << std::endl;
+
+  try {
+      Ope_Vect.resize(5,10.0);
+      assert(Ope_Vect.size()==5);
+      assert(Ope_Vect(4)==10);
+  } catch (int e){
+    std::cout<< " ERROR WITH resize(dim,val) : error number  "<<e<<"raised " << std::endl;
+  }
+
+  std::cout << " resize(dim,val) : OK" << std::endl;
+  std::cout << std::endl;
 
   std::cout << std::endl;
   std::cout << " ### FIN DES TESTS ### " << std::endl;

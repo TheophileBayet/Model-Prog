@@ -203,7 +203,7 @@ class Dvector
       return *V;
     }*/
 
-    bool operator ==(Dvector vector)
+    bool operator ==(Dvector &vector)
     {
       bool res = true;
       for (int i=0; i< dim; i++)
@@ -215,13 +215,16 @@ class Dvector
 
     void resize (int taille, double val)
     {
+      double* copie=NULL;
       if (taille > dim){
-        realloc(vect,taille*sizeof(double));
+        copie = (double*) realloc(vect,taille*sizeof(double));
         for (int i = dim; i < taille; i++)
         {
-          vect[i] = val;
+          copie[i] = val;
         }
       }
+      vect=copie;
+      free(copie);
       dim = taille;
     }
 };
