@@ -119,6 +119,7 @@ try {
 
   std::cout << "  standard unary operators tests :   "<< std::endl;
   std::cout << std::endl;
+
 /*
   try {
   *Test_Vect = Ope_Vect-() ;
@@ -128,9 +129,9 @@ try {
   std::cout<< " ERROR WITH UNARY - OPERATOR : error number  "<<e<<"raised " << std::endl;
 }
   std::cout << " Unary Operator - : OK" << std::endl;
-  std::cout << std::endl; */
+  std::cout << std::endl;*/
 
-  /*
+  
   std::cout << "  standard binary operators tests :   "<< std::endl;
   std::cout << std::endl;
   Dvector Bin_Ope_Vect(3,3);
@@ -150,7 +151,7 @@ try {
 
   std::cout << " Binary Operator + : OK" << std::endl;
   std::cout << std::endl;
-
+  /*
   try {
   std::cout << " on soustraie : " << std::endl ;
   Ope_Vect.display(std::cout);
