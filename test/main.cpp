@@ -27,7 +27,12 @@ int main()
   lolilol->display(test_str);
   assert(test_str.str() == "2.00000\n2.00000\n2.00000\n");
   std::cout <<"     DISPLAY : OK      "<<std::endl;
+  std::cout<< std::endl;
+  std::cout << "Before random fill :" << std::endl;
+  lolilol->display(std::cout);
   lolilol->fillRandomly();
+  std::cout << "After random fill : " << std::endl;
+  lolilol->display(std::cout);
   assert(lolilol->size()==3);
   std::cout<<std::endl;
   std::cout <<"     FillRandomly : OK      "<<std::endl;
@@ -53,11 +58,114 @@ int main()
   Dvector *R = new Dvector(yolo_name);
   assert(R->size()==10);
   std::cout<<std::endl;
-  std::cout <<"     Display puis constructor : OK      "<<std::endl;
+  std::cout <<"     Display then constructor : OK      "<<std::endl;
 
+  std::cout<<std::endl;
+  std::cout << "#### TESTS DES OPERATEURS (TP 1)  ####"<<std::endl;
+  std::cout<<std::endl;
 
+  std::cout << "  standard  real operators tests :   "<< std::endl;
+  std::cout << std::endl;
 
+  Dvector Ope_Vect(3,2);
+  Dvector *Test_Vect=new Dvector(3);
+  assert(Ope_Vect(2)==2);
 
+  std::cout << " Accessor : OK" << std::endl;
+  std::cout << std::endl;
+
+  try {
+  *Test_Vect = Ope_Vect+(2) ;
+  Test_Vect->display(std::cout);
+  assert((*Test_Vect)(2)==4);
+} catch (int e){
+  std::cout<< " ERROR WITH REAL + OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << " REAL Operator + : OK" << std::endl;
+  std::cout << std::endl;
+
+  try {
+  *Test_Vect = Ope_Vect-(3) ;
+  Test_Vect->display(std::cout);
+  assert((*Test_Vect)(1)==-1);
+} catch (int e){
+  std::cout<< " ERROR WITH REAL - OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << " REAL Operator - : OK" << std::endl;
+  std::cout << std::endl;
+
+try {
+  *Test_Vect = Ope_Vect*(-3) ;
+  Test_Vect->display(std::cout);
+  assert((*Test_Vect)(1)==-6);
+} catch (int e){
+  std::cout<< " ERROR WITH REAL * OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << " REAL Operator * : OK" << std::endl;
+  std::cout << std::endl;
+
+try {
+  *Test_Vect = Ope_Vect/(2) ;
+  Test_Vect->display(std::cout);
+  assert((*Test_Vect)(1)==1);
+} catch (int e){
+  std::cout<< " ERROR WITH REAL / OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+  std::cout << " REAL Operator / : OK" << std::endl;
+  std::cout << std::endl;
+
+  std::cout << "  standard unary operators tests :   "<< std::endl;
+  std::cout << std::endl;
+  /*
+  try {
+  *Test_Vect = Ope_Vect-() ;
+  Test_Vect->display(std::cout);
+  assert((*Test_Vect)(1)==-2);
+} catch (int e){
+  std::cout<< " ERROR WITH UNARY - OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+  std::cout << " Unary Operator - : OK" << std::endl;
+  std::cout << std::endl;
+
+  std::cout << "  standard binary operators tests :   "<< std::endl;
+  std::cout << std::endl;
+  Dvector Bin_Ope_Vect(3,3);
+/*
+  try {
+  std::cout << " on aditionne : " << std::endl ;
+  Ope_Vect.display(std::cout);
+  std::cout <<"et "<<std::endl;
+  Bin_Ope_Vect.display(std::cout);
+  *Test_Vect = Ope_Vect+(Bin_Ope_Vect) ;
+  std::cout << " ce qui donne : "<<std::endl;
+  Test_Vect->display(std::cout);
+  assert((*Test_Vect)(2)==5);
+} catch (int e){
+  std::cout<< " ERROR WITH BINARY + OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << " Binary Operator + : OK" << std::endl;
+  std::cout << std::endl;
+
+  try {
+  std::cout << " on soustraie : " << std::endl ;
+  Ope_Vect.display(std::cout);
+  std::cout <<"et "<<std::endl;
+  Bin_Ope_Vect.display(std::cout);
+  *Test_Vect = Ope_Vect-(Bin_Ope_Vect) ;
+  std::cout << " ce qui donne : "<<std::endl;
+  Test_Vect->display(std::cout);
+  assert((*Test_Vect)(2)==-1);
+} catch (int e){
+  std::cout<< " ERROR WITH BINARY - OPERATOR : error number  "<<e<<"raised " << std::endl;
+}
+
+  std::cout << " Binary Operator - : OK" << std::endl;
+  std::cout << std::endl;*/
+  std::cout << " Mais d'où vient ce petit doublre free ? " << std::endl;
 
   return 0;
 }

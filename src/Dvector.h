@@ -42,7 +42,8 @@ class Dvector
       {
         srand(time(NULL));
         for(int i=0;i<dim;i++){
-          vect[i]=rand()/RAND_MAX ;
+          vect[i]=rand();
+          // Si on divise par RAND_MAX, on obtient uniquement 0. Il faut ajouter un facteur supplémentaire.
         }
       }
 
