@@ -207,16 +207,11 @@ class Dvector
     void resize (int taille, double val)
     {
       if (taille > dim){
-        double* new_vect = new double[taille];
-        for (int i = 0; i < dim; i++)
-        {
-          new_vect[i] = vect[i];
-        }
+        realloc(vect,taille*sizeof(double));
         for (int i = dim; i < taille; i++)
         {
-          new_vect[i] = val;
+          vect[i] = val;
         }
-        this->vect = new_vect;
       }
       dim = taille;
     }
