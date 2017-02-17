@@ -2,11 +2,15 @@
 #ifndef DVECTORH
 #define DVECTORH
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <iomanip>
-#include <assert.h>
+#include <cassert>
 #include <fstream>
 #include <string>
+#include <cstdint>
+#include <cstring>
+
+
 using namespace std ;
 
 class Dvector
@@ -46,6 +50,14 @@ class Dvector
           // Si on divise par RAND_MAX, on obtient uniquement 0. Il faut ajouter un facteur supplémentaire.
         }
       }
+
+    Dvector& operator=(const Dvector &P)
+    {
+      dim = P.dim;
+      vect = new double[dim];
+      std::memcpy(vect,P.vect,dim*sizeof(double));
+      return *this;
+    }
 
     Dvector operator +(int n)
     {
