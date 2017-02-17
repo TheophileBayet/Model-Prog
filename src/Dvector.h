@@ -7,9 +7,7 @@
 #include <cassert>
 #include <fstream>
 #include <string>
-#include <cstdint>
 #include <cstring>
-
 
 using namespace std ;
 
@@ -195,5 +193,32 @@ class Dvector
       }
       return *V;
     }*/
+
+    bool operator ==(Dvector vector)
+    {
+      bool res = true;
+      for (int i=0; i< dim; i++)
+      {
+        res &= (vect[i] == vector.vect[i]);
+      }
+      return res;
+    }
+
+    void resize (int taille, double val)
+    {
+      if (taille > dim){
+        double* new_vect = new double[taille];
+        for (int i = 0; i < dim; i++)
+        {
+          new_vect[i] = vect[i];
+        }
+        for (int i = dim; i < taille; i++)
+        {
+          new_vect[i] = val;
+        }
+        this->vect = new_vect;
+      }
+      dim = taille;
+    }
 };
 #endif
