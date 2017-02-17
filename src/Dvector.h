@@ -116,5 +116,72 @@ class Dvector
       }
       return *V;
     }
+
+    void operator +=(Dvector vector)
+    {
+      for (int i=0; i< dim; i++)
+      {
+        vect[i] += vector.vect[i];
+      }
+    }
+
+    void operator -=(Dvector vector)
+    {
+      for (int i=0; i< dim; i++)
+      {
+        vect[i] -= vector.vect[i];
+      }
+    }
+
+    void operator *=(int n)
+    {
+      for (int i=0; i< dim; i++)
+      {
+        vect[i] *= n;
+      }
+    }
+
+    void operator /=(int n)
+    {
+      if (n!=0){
+        for (int i=0; i< dim; i++)
+        {
+          vect[i] /= n;
+        }
+      }
+      else {
+        std::cout << "Division par 0" <<  std::endl;
+      }
+    }
+
+    Dvector operator << (int n)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< n; i++)
+      {
+        V->vect[i] = 2 * vect[i];
+      }
+      return *V;
+    }
+
+    Dvector operator >> (int n)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< n; i++)
+      {
+        V->vect[i] = vect[i] / 2;
+      }
+      return *V;
+    }
+
+    Dvector operator =(Dvector vector)
+    {
+      Dvector *V = new Dvector(dim);
+      for (int i=0; i< dim; i++)
+      {
+        V->vect[i] = vect[i];
+      }
+      return *V;
+    }
 };
 #endif
