@@ -21,177 +21,26 @@ class Dvector
       Dvector(std::string);
       Dvector(int dim, double init=0.0);
       ~Dvector();
-
-      double operator () (int i) const
-      {
-        assert(i>=0 && i<dim);
-        return vect[i];
-      }
-
-      void display(std::ostream& str)
-      {
-        for(int i=0;i<dim;i++){
-          str << fixed << setprecision(5) << vect[i] << std::endl;
-        }
-      }
-
-      int size()
-      {
-        return this->dim;
-      }
-
-      void fillRandomly()
-      {
-        srand(time(NULL));
-        for(int i=0;i<dim;i++){
-          vect[i]=rand();
-          // Si on divise par RAND_MAX, on obtient uniquement 0. Il faut ajouter un facteur supplémentaire.
-        }
-      }
-
-    Dvector& operator=(const Dvector &P)
-    {
-      dim = P.dim;
-      vect = new double[dim];
-      memcpy(vect,P.vect,dim*sizeof(double));
-      return *this;
-    }
-
-    Dvector& operator +(int n)
-    {
-      static Dvector V(dim);
-      for (int i=0; i< dim; i++)
-      {
-        V.vect[i] = vect[i] + n;
-      }
-      return V;
-    }
-
-    Dvector& operator -(int n)
-    {
-      static Dvector V(dim);
-      for (int i=0; i< dim; i++)
-      {
-        V.vect[i] = vect[i] - n;
-      }
-      return V;
-    }
-
-    Dvector& operator *(int n)
-    {
-      static Dvector V(dim);;
-      for (int i=0; i< dim; i++)
-      {
-        V.vect[i] = vect[i] * n;
-      }
-      return V;
-    }
-
-    Dvector& operator /(int n)
-    {
-      static Dvector V(dim) ;
-      for (int i=0; i< dim; i++)
-      {
-        V.vect[i] = vect[i] / n;
-      }
-      return V;
-    }
-
-    Dvector& operator +(const Dvector &vector)
-    {
-      static Dvector V(vector.dim);
-      V = *this;
-      for (int i=0; i< dim; i++)
-      {
-        V.vect[i] = vect[i] + vector.vect[i];
-      }
-      return V;
-    }
-
-    Dvector& operator -(const Dvector &vector)
-    {
-      static Dvector V(dim);
-      V = *this;
-      for (int i=0; i< dim; i++)
-      {
-        V.vect[i] = vect[i] - vector.vect[i];
-      }
-      return V;
-    }
-
-    Dvector& operator -()
-    {
-      static Dvector V(dim);
-      V =*this;
-      for (int i=0; i< dim; i++)
-      {
-        V.vect[i] = - vect[i];
-      }
-      return V;
-    }
-
-    void operator +=(Dvector &vector)
-    {
-      for (int i=0; i< dim; i++)
-      {
-        vect[i] += vector.vect[i];
-      }
-    }
-
-    void operator -=(Dvector &vector)
-    {
-      for (int i=0; i< dim; i++)
-      {
-        vect[i] -= vector.vect[i];
-      }
-    }
-
-    void operator *=(int n)
-    {
-      for (int i=0; i< dim; i++)
-      {
-        vect[i] *= n;
-      }
-    }
-
-    void operator /=(int n)
-    {
-      if (n!=0){
-        for (int i=0; i< dim; i++)
-        {
-          vect[i] /= n;
-        }
-      }
-      else {
-        std::cout << "Division par 0" <<  std::endl;
-      }
-    }
-
-    Dvector& operator <<(int n)
-    {
-      static Dvector V(dim);
-      V = *this;
-      for (int j=0;j<n;j++){
-        for (int i=0; i< dim; i++)
-        {
-          V.vect[i] = 2 * V.vect[i];
-        }
-      }
-      return V;
-    }
-
-    Dvector& operator >>(int n)
-    {
-      static Dvector V(dim);
-      V = *this;
-      for (int j=0;j<n;j++){
-        for (int i=0; i< dim; i++)
-        {
-          V.vect[i] = V.vect[i] / 2;
-        }
-      }
-      return V;
-    }
+      double operator () (int i) const;
+      void display(std::ostream& str);
+      int size();
+      void fillRandomly();
+    Dvector& operator=(const Dvector &P);
+    Dvector& operator +(int n);
+    Dvector& operator -(int n);
+    Dvector& operator *(int n);
+    Dvector& operator /(int n);
+    Dvector& operator +(const Dvector &vector);
+    Dvector& operator -(const Dvector &vector);
+    Dvector& operator -();
+    void operator +=(Dvector &vector);
+    void operator -=(Dvector &vector);
+    void operator *=(int n);
+    void operator /=(int n);
+    Dvector& operator <<(int n);
+    Dvector& operator >>(int n);
+    bool operator ==(Dvector &vector);
+    void resize (int taille, double val);
     /*
     Dvector operator =(Dvector vector)
     {
@@ -203,29 +52,5 @@ class Dvector
       return *V;
     }*/
 
-    bool operator ==(Dvector &vector)
-    {
-      bool res = true;
-      for (int i=0; i< dim; i++)
-      {
-        res &= (vect[i] == vector.vect[i]);
-      }
-      return res;
-    }
-
-    void resize (int taille, double val)
-    {
-      double* copie=NULL;
-      if (taille > dim){
-        copie = (double*) realloc(vect,taille*sizeof(double));
-        for (int i = dim; i < taille; i++)
-        {
-          copie[i] = val;
-        }
-      }
-      vect=copie;
-      free(copie);
-      dim = taille;
-    }
 };
 #endif

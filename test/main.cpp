@@ -76,7 +76,7 @@ int main()
 
   try {
   *Test_Vect = Ope_Vect+(2.0) ;
-  Test_Vect->display(std::cout);
+  //Test_Vect->display(std::cout);
   assert((*Test_Vect)(2)==4.0);
 } catch (int e){
   std::cout<< " ERROR WITH REAL + OPERATOR : error number  "<<e<<"raised " << std::endl;
@@ -87,7 +87,7 @@ int main()
 
   try {
   *Test_Vect = Ope_Vect-(3) ;
-  Test_Vect->display(std::cout);
+  //Test_Vect->display(std::cout);
   assert((*Test_Vect)(1)==-1);
 } catch (int e){
   std::cout<< " ERROR WITH REAL - OPERATOR : error number  "<<e<<"raised " << std::endl;
@@ -98,7 +98,7 @@ int main()
 
 try {
   *Test_Vect = Ope_Vect*(-3) ;
-  Test_Vect->display(std::cout);
+  //Test_Vect->display(std::cout);
   assert((*Test_Vect)(1)==-6);
 } catch (int e){
   std::cout<< " ERROR WITH REAL * OPERATOR : error number  "<<e<<"raised " << std::endl;
@@ -109,7 +109,7 @@ try {
 
 try {
   *Test_Vect = Ope_Vect/(2) ;
-  Test_Vect->display(std::cout);
+  //Test_Vect->display(std::cout);
   assert((*Test_Vect)(1)==1);
 } catch (int e){
   std::cout<< " ERROR WITH REAL / OPERATOR : error number  "<<e<<"raised " << std::endl;
@@ -117,10 +117,10 @@ try {
   std::cout << " REAL Operator / : OK" << std::endl;
   std::cout << std::endl;
 
-  /*
+
   std::cout << "  standard unary operators tests :   "<< std::endl;
   std::cout << std::endl;
-
+/*
   try {
   *Test_Vect = Ope_Vect-() ;
   Test_Vect->display(std::cout);
@@ -130,7 +130,7 @@ try {
 }
 
   std::cout << " Unary Operator - : OK" << std::endl;
-  std::cout << std::endl; */
+  std::cout << std::endl;*/
 
 
   std::cout << "  standard binary operators tests :   "<< std::endl;
@@ -138,13 +138,13 @@ try {
   Dvector Bin_Ope_Vect(3,3);
 
   try {
-  std::cout << " on aditionne : " << std::endl ;
-  Ope_Vect.display(std::cout);
-  std::cout <<"et "<<std::endl;
-  Bin_Ope_Vect.display(std::cout);
+  //std::cout << " on aditionne : " << std::endl ;
+  //Ope_Vect.display(std::cout);
+  //std::cout <<"et "<<std::endl;
+  //Bin_Ope_Vect.display(std::cout);
   *Test_Vect = Ope_Vect+(Bin_Ope_Vect) ;
-  std::cout << " ce qui donne : "<<std::endl;
-  Test_Vect->display(std::cout);
+  //std::cout << " ce qui donne : "<<std::endl;
+  //Test_Vect->display(std::cout);
   assert((*Test_Vect)(2)==5);
 } catch (int e){
   std::cout<< " ERROR WITH BINARY + OPERATOR : error number  "<<e<<"raised " << std::endl;
@@ -154,13 +154,13 @@ try {
   std::cout << std::endl;
 
   try {
-  std::cout << " on soustraie : " << std::endl ;
-  Ope_Vect.display(std::cout);
-  std::cout <<"et "<<std::endl;
-  Bin_Ope_Vect.display(std::cout);
+  //std::cout << " on soustraie : " << std::endl ;
+  //Ope_Vect.display(std::cout);
+  //std::cout <<"et "<<std::endl;
+  //Bin_Ope_Vect.display(std::cout);
   *Test_Vect = Ope_Vect-(Bin_Ope_Vect) ;
-  std::cout << " ce qui donne : "<<std::endl;
-  Test_Vect->display(std::cout);
+  //std::cout << " ce qui donne : "<<std::endl;
+  //Test_Vect->display(std::cout);
   assert((*Test_Vect)(2)==-1);
 } catch (int e){
   std::cout<< " ERROR WITH BINARY - OPERATOR : error number  "<<e<<"raised " << std::endl;
@@ -242,14 +242,14 @@ try {
 
   std::cout << "Operator == : OK" << std::endl;
   std::cout << std::endl;
-
+/*
   try {
       Ope_Vect.resize(5,10.0);
       assert(Ope_Vect.size()==5);
       assert(Ope_Vect(4)==10);
   } catch (int e){
     std::cout<< " ERROR WITH resize(dim,val) : error number  "<<e<<"raised " << std::endl;
-  }
+  }*/
 
   std::cout << " resize(dim,val) : OK" << std::endl;
   std::cout << std::endl;
