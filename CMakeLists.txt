@@ -1,56 +1,30 @@
+
+cmake_minimum_required(VERSION 2.8.11)
+
 #Déclaration du projet
 
 project(lab1)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g")
 
-#Génération de la liste des fichiers sources
 
-file(
+include_directories(../src)
+enable_testing ()
+# Télécharge googletest au moment de la configureation
+configure_file(CMakeLists.txt.in
+               googletest-download/CMakeLists.txt)
+execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
+execute_process(COMMAND ${CMAKE_COMMAND} --build .
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download )
 
-        GLOB_RECURSE
+# Ajout googletest directement au moment de la compilation
+add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src)
 
-        source_files
+include_directories(${gtest_SOURCE_DIR}/include)
 
-        src/*
+## gestion des subdirectory ##
 
-)
-
-file(
-
-        GLOB_RECURSE
-
-        doc_files
-
-        doc/*
-
-)
-
-file(
-
-        GLOB_RECURSE
-
-        test_files
-
-        test/*
-
-)
-#Déclaration de l'exécutable du main de src
-
-add_executable(
-
-        ./src/src_exe
-
-        ${source_files}
-
-)
-
-add_executable(
-
-        ./test/test_exe
-
-        ${test_files}
-
-        ./src/Dvector.cpp
-
-)
+add_subdirectory(src)
+add_subdirectory(tests)
+link_directories(lib/${CMAKE_BUILD_TYPE})
