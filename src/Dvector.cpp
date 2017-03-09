@@ -13,6 +13,15 @@ Dvector::Dvector(int dim, double init)
   for(int i=0;i<this->dim;i++) this->vect[i]=init;
 }
 
+Dvector::Dvector(const Dvector& v)
+{
+  this->dim = v.dim;
+  this->vect = new double[v.dim];
+  for (int i = 0; i < v.dim; i++){
+    this->vect[i] = v.vect[i];
+  }
+}
+
 Dvector::Dvector(std::string file)
 {
   fstream fichier(file.c_str());
@@ -226,12 +235,20 @@ bool Dvector::operator ==(Dvector &vector)
 
 void Dvector::resize (int taille, double val)
 {
-  double* copie=NULL;
+  double* copie= NULL;
   if (taille > dim){
-    copie = (double*) realloc(vect,taille*sizeof(double));
-    for (int i = dim; i < taille; i++)
+    copie = (double*)malloc(taille*sizeof(double));
+    for (int i = 0; i < dim; i++)
     {
+      copie[i] = vect[i];
+    }
+    for (int i = dim; i < taille; i++){
       copie[i] = val;
+    }
+  } else {
+    copie = (double*) malloc(taille*sizeof(double));
+    for (int i = 0; i < taille; i++){
+      copie[i] = vect[i];
     }
   }
   vect=copie;

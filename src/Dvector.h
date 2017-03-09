@@ -19,6 +19,7 @@ class Dvector
   public :
       Dvector();
       Dvector(std::string);
+      Dvector(const Dvector& v);
       Dvector(int dim, double init=0.0);
       ~Dvector();
       double operator () (int i) const;
