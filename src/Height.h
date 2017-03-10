@@ -15,5 +15,5 @@ class Height
     int getDimX();
     int getDimY();
     // Renvoie valeur hauteur du point;
-      double operator () (int i, int j) const;
+    double operator () (int i, int j) const;
 }
