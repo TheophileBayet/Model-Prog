@@ -33,8 +33,15 @@ TEST_F(DvectorTest,constructors){
 
     //EXPECT_EQ(10,name->size());
 
-
 }
+
+TEST_F(DvectorTest,internalFunctions){
+    //Test display
+    stringstream disp;
+    vec3->display(disp);
+    //EXPECT_EQ()
+}
+
 
 int main(int argc, char **argv) {
   testing::InitGoogleTest(&argc, argv);
