@@ -1,16 +1,18 @@
+#include "Dvector.h";
+
 using namespace std;
 
 class WaveModel
 {
   private :
-    winddirection;
-    intensity;
-    wave;
-    wavelength;
-    waveheight;
+    Dvector winddirection;
+    double intensity;
+    Dvector wave;
+    double wavelength;
+    double waveheight;
   public :
     WaveModel();
     WaveModel(const WaveModel& w);
     //WaveModel(.....);
-      
+
 }
