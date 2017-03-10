@@ -48,6 +48,7 @@ Dvector::Dvector(std::string file)
     fichier.close();
   }else{
     this->dim = 0;
+
   }
 }
 
