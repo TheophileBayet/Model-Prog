@@ -37,8 +37,9 @@ TEST_F(DvectorTest,constructors){
 
 TEST_F(DvectorTest,internalFunctions){
     //Test display
+    Dvector vect(3,2);
     stringstream disp;
-    vec3->display(disp);
+    vect.display(disp);
     //EXPECT_EQ()
 }
 
