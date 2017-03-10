@@ -5,14 +5,22 @@ using namespace std;
 class WaveModel
 {
   private :
-    Dvector winddirection;
+    Dvector windDirection;
     double intensity;
     Dvector wave;
-    double wavelength;
-    double waveheight;
+    double waveLength;
+    double waveHeight;
   public :
-    WaveModel();
+    //WaveModel();
+    WaveModel(Dvector windDirection, double intensity, Dvector wave, double waveHeight, double waveLength);
     WaveModel(const WaveModel& w);
+    ~Wave();
     //WaveModel(.....);
+    Dvector getWindDirection();
+    double getIntensity();
+    Dvector getWave();
+    double getWaveLength();
+    double getWaveHeight();
 
+    double operator () (const double x,const double y,const int t) const;
 }
