@@ -1,4 +1,4 @@
-using namesapce std;
+  using namesapce std;
 
 class Height
 {
@@ -14,5 +14,6 @@ class Height
     ~Height();
     int getDimX();
     int getDimY();
-    double operator () (int i, int j) const;
+    // Renvoie valeur hauteur du point;
+      double operator () (int i, int j) const;
 }
