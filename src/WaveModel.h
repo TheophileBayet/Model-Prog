@@ -4,13 +4,13 @@ using namespace std;
 
 class WaveModel
 {
-  private :
+  private:
     Dvector windDirection;
     double intensity;
     Dvector wave;
     double waveLength;
     double waveHeight;
-  public :
+  public:
     //WaveModel();
     WaveModel(Dvector windDirection, double intensity, Dvector wave, double waveHeight, double waveLength);
     WaveModel(const WaveModel& w);

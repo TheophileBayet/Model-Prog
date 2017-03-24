@@ -4,12 +4,12 @@ class GerstnerWave
 {
 /*  protected :
     int seed*/
-  private :
+  private:
     double amplitude;
     double phase;
     Dvector direction;
     double freq;
-  public :
+  public:
     GerstnerWave(double amplitude, Dvector direction, double phase, double freq);
     GerstnerWave(const GerstnerWave& gw);
     ~GerstnerWave();
