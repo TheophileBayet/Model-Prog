@@ -1,4 +1,5 @@
 #include "WaveModel.h"
+#include "math.h"
 
 WaveModel::WaveModel(Dvector windDirection, double intensity, Dvector wave, double waveHeight, double waveLength)
 {
@@ -47,4 +48,9 @@ double getWaveHeight()
 double getWaveLength()
 {
   return this->waveLength;
+}
+
+double WaveModel::operator ()(double x, double y, time t)
+{
+  return (x/y)*sin(t);
 }

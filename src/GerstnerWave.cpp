@@ -40,7 +40,6 @@ Dvector getDirection()
 
 double GerstnerWave::operator ()(double x, double y)
 {
-  double z = 0.0;
-  
-  return z;
+  assert(y != 0);
+  return x/y;
 }
