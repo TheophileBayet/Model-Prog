@@ -10,15 +10,21 @@ Dvector::Dvector(int dim, double init)
 {
   this->dim=dim;
   this->vect = new double[dim];
-  for(int i=0;i<this->dim;i++) this->vect[i]=init;
+  this->im = new double[dim];
+  for(int i=0;i<this->dim;i++){
+    this->vect[i]=init;
+    this->im[i]=init;
+  }
 }
 
 Dvector::Dvector(const Dvector& v)
 {
   this->dim = v.dim;
   this->vect = new double[v.dim];
+  this->im = new double[v.dim];
   for (int i = 0; i < v.dim; i++){
     this->vect[i] = v.vect[i];
+    this->im[i] = v.im[i];
   }
 }
 
@@ -36,6 +42,10 @@ Dvector::Dvector(std::string file)
         }
     this->dim = i;
     this->vect = new double[dim];
+    this->im = new double[dim];
+    for (int i = 0; i<dim; i++){
+      im[i] = 0.0;
+    }
     i =0;
     fichier.clear();
     fichier.seekg( pos,std::ios_base::beg ) ;
@@ -58,6 +68,15 @@ double  Dvector::operator () (int i) const
   return vect[i];
 }
 
+double  Dvector::operator () (int i, int return_im) const
+{
+  assert(i>=0 && i<dim);
+  if (return_im = 1){
+    return im[i];
+  }
+  return vect[i];
+}
+
 void Dvector::display(std::ostream& str)
 {
   for(int i=0;i<dim;i++){
@@ -75,6 +94,7 @@ void Dvector::fillRandomly()
   srand(time(NULL));
   for(int i=0;i<dim;i++){
     vect[i]=rand();
+    im[i]=rand();
     // Si on divise par RAND_MAX, on obtient uniquement 0. Il faut ajouter un facteur supplémentaire.
   }
 }
@@ -83,46 +103,52 @@ Dvector& Dvector::operator=(const Dvector &P)
 {
   dim = P.dim;
   vect = new double[dim];
+  im = new double[dim];
   memcpy(vect,P.vect,dim*sizeof(double));
+  memcpy(im,P.im,dim*sizeof(double));
   return *this;
 }
 
-Dvector& Dvector::operator +(int n)
+Dvector& Dvector::operator +(double f)
 {
   static Dvector V(dim);
   for (int i=0; i< dim; i++)
   {
-    V.vect[i] = vect[i] + n;
+    V.vect[i] = vect[i] + f;
+    V.im[i] = im[i] + f;
   }
   return V;
 }
 
-Dvector& Dvector::operator -(int n)
+Dvector& Dvector::operator -(double f)
 {
   static Dvector V(dim);
   for (int i=0; i< dim; i++)
   {
-    V.vect[i] = vect[i] - n;
+    V.vect[i] = vect[i] - f;
+    V.im[i] = im[i] - f;
   }
   return V;
 }
 
-Dvector& Dvector::operator *(int n)
+Dvector& Dvector::operator *(double f)
 {
   static Dvector V(dim);;
   for (int i=0; i< dim; i++)
   {
-    V.vect[i] = vect[i] * n;
+    V.vect[i] = vect[i] * f;
+    V.im[i] = im[i] * f;
   }
   return V;
 }
 
-Dvector& Dvector::operator /(int n)
+Dvector& Dvector::operator /(double f)
 {
   static Dvector V(dim) ;
   for (int i=0; i< dim; i++)
   {
-    V.vect[i] = vect[i] / n;
+    V.vect[i] = vect[i] / f;
+    V.im[i] = im[i] / f;
   }
   return V;
 }
@@ -134,6 +160,7 @@ Dvector& Dvector::operator +(const Dvector &vector)
   for (int i=0; i< dim; i++)
   {
     V.vect[i] = vect[i] + vector.vect[i];
+    V.im[i] = im[i] + vector.im[i];
   }
   return V;
 }
@@ -145,6 +172,7 @@ Dvector& Dvector::operator -(const Dvector &vector)
   for (int i=0; i< dim; i++)
   {
     V.vect[i] = vect[i] - vector.vect[i];
+    V.im[i] = im[i] - vector.im[i];
   }
   return V;
 }
@@ -156,6 +184,7 @@ Dvector& Dvector::operator -()
   for (int i=0; i< dim; i++)
   {
     V.vect[i] = - vect[i];
+    V.im[i] = - im[i];
   }
   return V;
 }
@@ -165,6 +194,7 @@ void Dvector::operator +=(Dvector &vector)
   for (int i=0; i< dim; i++)
   {
     vect[i] += vector.vect[i];
+    im[i] += vector.im[i];
   }
 }
 
@@ -173,23 +203,26 @@ void Dvector::operator -=(Dvector &vector)
   for (int i=0; i< dim; i++)
   {
     vect[i] -= vector.vect[i];
+    im[i] -= vector.im[i];
   }
 }
 
-void Dvector::operator *=(int n)
+void Dvector::operator *=(double f)
 {
   for (int i=0; i< dim; i++)
   {
-    vect[i] *= n;
+    vect[i] *= f;
+    im[i] *= f;
   }
 }
 
-void Dvector::operator /=(int n)
+void Dvector::operator /=(double f)
 {
-  if (n!=0){
+  if (f!=0){
     for (int i=0; i< dim; i++)
     {
-      vect[i] /= n;
+      vect[i] /= f;
+      im[i] /= f;
     }
   }
   else {
@@ -205,6 +238,7 @@ Dvector& Dvector::operator <<(int n)
     for (int i=0; i< dim; i++)
     {
       V.vect[i] = 2 * V.vect[i];
+      V.im[i] = 2 * V.im[i];
     }
   }
   return V;
@@ -218,6 +252,7 @@ Dvector& Dvector::operator >>(int n)
     for (int i=0; i< dim; i++)
     {
       V.vect[i] = V.vect[i] / 2;
+      V.im[i] = V.im[i] / 2;
     }
   }
   return V;
@@ -228,7 +263,7 @@ bool Dvector::operator ==(Dvector &vector)
   bool res = true;
   for (int i=0; i< dim; i++)
   {
-    res &= (vect[i] == vector.vect[i]);
+    res &= (vect[i] == vector.vect[i] && im[i] == vector.im[i]);
   }
   return res;
 }
@@ -236,27 +271,36 @@ bool Dvector::operator ==(Dvector &vector)
 void Dvector::resize (int taille, double val)
 {
   double* copie= NULL;
+  double* im_copie = NULL;
   if (taille > dim){
     copie = (double*)malloc(taille*sizeof(double));
+    im_copie = (double*)malloc(taille*sizeof(double));
     for (int i = 0; i < dim; i++)
     {
       copie[i] = vect[i];
+      im_copie[i] = im[i];
     }
     for (int i = dim; i < taille; i++){
       copie[i] = val;
+      im[i] = val;
     }
   } else {
     copie = (double*) malloc(taille*sizeof(double));
+    im_copie = (double*) malloc(taille*sizeof(double));
     for (int i = 0; i < taille; i++){
       copie[i] = vect[i];
+      im_copie[i] = im[i];
     }
   }
   vect=copie;
+  im = im_copie;
   free(copie);
+  free(im_copie);
   dim = taille;
 }
 
 Dvector::~Dvector()
 {
   delete [] vect;
+  delete [] im;
 }

@@ -16,6 +16,7 @@ class Dvector
   private :
     int dim;
     double* vect;
+    double* im; //partie imaginaire
   public :
       Dvector();
       Dvector(std::string);
@@ -23,21 +24,22 @@ class Dvector
       Dvector(int dim, double init=0.0);
       ~Dvector();
       double operator () (int i) const;
+      double  operator () (int i, int return_im) const;
       void display(std::ostream& str);
       int size();
       void fillRandomly();
     Dvector& operator=(const Dvector &P);
-    Dvector& operator +(int n);
-    Dvector& operator -(int n);
-    Dvector& operator *(int n);
-    Dvector& operator /(int n);
+    Dvector& operator +(double f);
+    Dvector& operator -(double f);
+    Dvector& operator *(double f);
+    Dvector& operator /(double f);
     Dvector& operator +(const Dvector &vector);
     Dvector& operator -(const Dvector &vector);
     Dvector& operator -();
     void operator +=(Dvector &vector);
     void operator -=(Dvector &vector);
-    void operator *=(int n);
-    void operator /=(int n);
+    void operator *=(double f);
+    void operator /=(double f);
     Dvector& operator <<(int n);
     Dvector& operator >>(int n);
     bool operator ==(Dvector &vector);
