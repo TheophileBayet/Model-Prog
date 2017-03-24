@@ -5,30 +5,30 @@ GerstnerWave::GerstnerWave(const GerstnerWave& gw)
   this->amplitude = gw.amplitude;
   this->freq = gw.freq;
   this->phase = gw.phase;
-  this->direction = new Dvector(gw.direction);
+  this->direction =Dvector(gw.direction);
 }
 
 GerstnerWave::~GerstnerWave()
 {
-  delete [] direction;
+  delete [] &direction;
 }
 
-double getAmplitude()
+double GerstnerWave::getAmplitude()
 {
   return this->amplitude;
 }
 
-double getPhase()
+double GerstnerWave::getPhase()
 {
   return this->phase;
 }
 
-double getFreq()
+double GerstnerWave::getFreq()
 {
   return this->freq;
 }
 
-Dvector getDirection()
+Dvector GerstnerWave::getDirection()
 {
   return this->direction;
 }

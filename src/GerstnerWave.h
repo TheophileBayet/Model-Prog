@@ -1,3 +1,5 @@
+#ifndef GERSTNERWAVE
+#define GERSTNERWAVE
 #include "WaveModel.h"
 
 class GerstnerWave
@@ -18,4 +20,5 @@ class GerstnerWave
 
     double operator ()(double x, double y);
 
-}
+};
+#endif

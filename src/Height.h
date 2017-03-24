@@ -1,4 +1,7 @@
-  using namesapce std;
+#ifndef HEIGHT
+#define HEIGHT
+
+using namespace std;
 
 class Height
 {
@@ -8,7 +11,7 @@ class Height
     double** vect;
   public :
     Height();
-    Height(int dimx, int dimy, double init);
+    Height(int const dimx,int const  dimy, double init);
     Height(const Height& h);
     //TODO Height(std::string);
     ~Height();
@@ -16,4 +19,5 @@ class Height
     int getDimY();
     // Renvoie valeur hauteur du point;
     double operator () (int i, int j) const;
-}
+};
+#endif

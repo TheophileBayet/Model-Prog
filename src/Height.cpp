@@ -7,13 +7,13 @@ Height::Height(){
   dimy = 0;
 }
 
-Height::Height(int nx, int ny, double init)
+Height::Height(int const nx, int const ny, double init)
 {
-  this->dimx = dimx;
-  this->dimy = dimy;
-  this->vect = new double[dimx][dimy];
-  for (int i = 0; i < dimx; i++){
-    for (int j = 0; j < dimy; j++){
+  this->dimx = nx;
+  this->dimy = ny;
+  this->vect = new double*;
+  for (int i = 0; i < nx; i++){
+    for (int j = 0; j < ny; j++){
       this->vect[i][j] = init;
     }
   }
@@ -23,7 +23,7 @@ Height::Height(const Height& h)
 {
   this->dimx = h.dimx;
   this->dimy = h.dimy;
-  this->vect = new double[h.dimx][h.dimy];
+  this->vect = new double*;
   for (int i = 0; i < h.dimx; i++){
     for (int j = 0; j < h.dimy; j++){
       this->vect[i][j] = h.vect[i][j];
@@ -66,17 +66,17 @@ Height::~Height()
   delete [] vect;
 }
 
-int getDimX()
+int Height::getDimX()
 {
   return this->dimx;
 }
 
-int getDimY()
+int Height::getDimY()
 {
   return this->dimy;
 }
 
-double operator () (int i, int j) const
+double Height::operator () (int i, int j) const
 {
   if (vect != 0){
     return vect[i][j];

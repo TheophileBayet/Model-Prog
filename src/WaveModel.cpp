@@ -15,42 +15,42 @@ WaveModel::WaveModel(const WaveModel& wave)
   this->intensity = wave.intensity;
   this->waveLength = wave.waveLength;
   this->waveHeight = wave.waveHeight;
-  this->windDirection = new Dvector(wave.windDirection);
-  this->wave = new Dvector(wave.wave);
+  this->windDirection = Dvector(wave.windDirection);
+  this->wave = Dvector(wave.wave);
 }
 
 WaveModel::~WaveModel()
 {
-  delete [] wave;
-  delete [] windDirection;
+  delete [] &wave;
+  delete [] &windDirection;
 }
 
-Dvector getWindDirection()
+Dvector WaveModel::getWindDirection()
 {
   return this->windDirection;
 }
 
-Dvector getWave()
+Dvector WaveModel::getWave()
 {
   return this->wave;
 }
 
-double getIntensity()
+double WaveModel::getIntensity()
 {
   return this->intensity;
 }
 
-double getWaveHeight()
+double WaveModel::getWaveHeight()
 {
   return this->waveHeight;
 }
 
-double getWaveLength()
+double WaveModel::getWaveLength()
 {
   return this->waveLength;
 }
 
-double WaveModel::operator ()(double x, double y, time t)
+double WaveModel::operator ()(const double x,const double y,const int t) const
 {
   return (x/y)*sin(t);
 }
