@@ -1,0 +1,6 @@
+/user/0/.base/bayett/home/workspace/C++/lab1/TP1_bayett_mounep/build/build/googletest-src/googlemock/CMakeFiles/gmock.dir
+/user/0/.base/bayett/home/workspace/C++/lab1/TP1_bayett_mounep/build/build/googletest-src/googlemock/CMakeFiles/gmock_main.dir
+/user/0/.base/bayett/home/workspace/C++/lab1/TP1_bayett_mounep/build/build/googletest-src/googlemock/gtest/CMakeFiles/gtest.dir
+/user/0/.base/bayett/home/workspace/C++/lab1/TP1_bayett_mounep/build/build/googletest-src/googlemock/gtest/CMakeFiles/gtest_main.dir
+/user/0/.base/bayett/home/workspace/C++/lab1/TP1_bayett_mounep/build/tests/CMakeFiles/test_class.dir
+/user/0/.base/bayett/home/workspace/C++/lab1/TP1_bayett_mounep/build/src/CMakeFiles/vector.dir
