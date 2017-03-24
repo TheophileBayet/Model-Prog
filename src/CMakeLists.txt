@@ -15,7 +15,7 @@ file(
 
         source_files
 
-        Dvector.h Dvector.cpp
+        ./*
 
 )
 

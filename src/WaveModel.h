@@ -1,4 +1,7 @@
-#include "Dvector.h";
+#ifndef WAVEMODEL
+#define WAVEMODEL
+
+#include "Dvector.h"
 
 using namespace std;
 
@@ -14,7 +17,7 @@ class WaveModel
     //WaveModel();
     WaveModel(Dvector windDirection, double intensity, Dvector wave, double waveHeight, double waveLength);
     WaveModel(const WaveModel& w);
-    ~Wave();
+    ~WaveModel();
     //WaveModel(.....);
     Dvector getWindDirection();
     double getIntensity();
@@ -23,4 +26,5 @@ class WaveModel
     double getWaveHeight();
 
     double operator () (const double x,const double y,const int t) const;
-}
+};
+#endif
