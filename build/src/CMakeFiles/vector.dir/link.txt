@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -std=c++11 -g   -shared -Wl,-soname,libvector.so -o lib/libvector.so CMakeFiles/vector.dir/Dvector.cpp.o 
