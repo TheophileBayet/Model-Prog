@@ -2,8 +2,6 @@
 
 class GerstnerWave
 {
-/*  protected :
-    int seed*/
   private:
     double amplitude;
     double phase;
@@ -17,7 +15,6 @@ class GerstnerWave
     double getPhase();
     double getFreq();
     Dvector getDirection();
-    //int getSeed();
 
     double operator ()(double x, double y);
 

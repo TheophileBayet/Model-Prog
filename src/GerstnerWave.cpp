@@ -41,5 +41,5 @@ Dvector getDirection()
 double GerstnerWave::operator ()(double x, double y)
 {
   assert(y != 0);
-  return x/y;
+  return this->amplitude * x/y;
 }
