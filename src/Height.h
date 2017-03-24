@@ -1,6 +1,8 @@
+
+
 #ifndef HEIGHT
 #define HEIGHT
-
+#include"Dvector.h"
 using namespace std;
 
 class Height
@@ -8,7 +10,7 @@ class Height
   private :
     int dimx;
     int dimy;
-    double** vect;
+    Dvector vect;
   public :
     Height();
     Height(int const dimx,int const  dimy, double init);

@@ -12,7 +12,7 @@ private:
     PhilipsWaveModel(const PhilipsWaveModel& pw);
     ~PhilipsWaveModel();
     Dvector fft(Dvector x);
-
+    Dvector ifft(Dvector x);
 
 
 

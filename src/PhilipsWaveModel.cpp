@@ -20,13 +20,28 @@
       }
     Dvector even = Dvector(n/2);
     Dvector odd = Dvector(n/2);
-    Dvector y =Dvector(n);
+    Dvector y =Dvector(n,0);
     fft(even);
     fft(odd);
 
     for(int i = 0 ; i <n/2; i++){
       double t = odd(i)*exp(-2*M_PI*i/n);
-
+      y.add(i,even(i)+t);
+      y.add((i+n/2),even(i)-t);
     }
-    return x;
+    return y;
+    }
+
+
+    Dvector PhilipsWaveModel::ifft(Dvector x){
+      // Implémentation de la fft
+    int n = x.size();
+    if(x.size()<=1){
+        return Dvector(x);
+      }
+    Dvector y =Dvector(n,0);
+    x.conjugate();
+    fft(x);
+    y = x.conjugate()/n;
+    return y;
     }

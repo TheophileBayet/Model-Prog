@@ -25,6 +25,7 @@ class Dvector
       ~Dvector();
       double operator () (int i) const;
       double  operator () (int i, int return_im) const;
+      double operator () (int i, int j);
       void display(std::ostream& str);
       int size();
       void fillRandomly();
@@ -40,6 +41,9 @@ class Dvector
     void operator -=(Dvector &vector);
     void operator *=(double f);
     void operator /=(double f);
+    void add(int i , double f);
+    void set(int const i , int const j ,int const dimx, double f);
+    Dvector conjugate();
     Dvector& operator <<(int n);
     Dvector& operator >>(int n);
     bool operator ==(Dvector &vector);

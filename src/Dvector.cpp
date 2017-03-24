@@ -77,6 +77,13 @@ double  Dvector::operator () (int i, int return_im) const
   return vect[i];
 }
 
+double Dvector::operator () (int i, int j){
+  if(i+j>dim){
+    std::cerr<<"ERR : Dvector::operator () :: indice out of bounds"<<std::endl;
+  }
+  return(this->vect[i+j]);
+}
+
 void Dvector::display(std::ostream& str)
 {
   for(int i=0;i<dim;i++){
@@ -228,6 +235,31 @@ void Dvector::operator /=(double f)
   else {
     std::cout << "Division par 0" <<  std::endl;
   }
+}
+
+void Dvector::add(int i ,double f)
+{
+  if (i>=this->size()){
+    std::cerr<<" Error : Dvector::add : indice out of bounds"<<std::endl;
+  }else{
+    this->vect[i]+=f;
+  }
+
+}
+
+void Dvector::set(int const i , int const j ,int const dimx, double f){
+  if(i*dimx+j>= dim){
+    std::cerr<<"ERR : Dvector::set : indice out of bounds"<<std::endl;
+  }
+  this->vect[i*dimx+j]=f;
+
+}
+
+Dvector Dvector::conjugate(){
+  for ( int i=0; i < dim; i++){
+    this->im[i]=-this->im[i];
+  }
+  return *this;
 }
 
 Dvector& Dvector::operator <<(int n)

@@ -11,22 +11,17 @@ Height::Height(int const nx, int const ny, double init)
 {
   this->dimx = nx;
   this->dimy = ny;
-  this->vect = new double*;
-  for (int i = 0; i < nx; i++){
-    for (int j = 0; j < ny; j++){
-      this->vect[i][j] = init;
-    }
-  }
+  this->vect = Dvector(nx*ny,init);
 }
 
 Height::Height(const Height& h)
 {
   this->dimx = h.dimx;
   this->dimy = h.dimy;
-  this->vect = new double*;
+  this->vect = Dvector(dimx*dimy);
   for (int i = 0; i < h.dimx; i++){
     for (int j = 0; j < h.dimy; j++){
-      this->vect[i][j] = h.vect[i][j];
+      this->vect.set(i,j,dimx,h(i,j));
     }
   }
 }
@@ -63,7 +58,7 @@ Height::Height(const Height& h)
 
 Height::~Height()
 {
-  delete [] vect;
+  vect.~Dvector();
 }
 
 int Height::getDimX()
@@ -78,10 +73,5 @@ int Height::getDimY()
 
 double Height::operator () (int i, int j) const
 {
-  if (vect != 0){
-    return vect[i][j];
-  } else {
-    std::cout << "Not initialized" <<  std::endl;
-  }
-  return 0;
+  return this->vect(i*dimx,j);
 }
