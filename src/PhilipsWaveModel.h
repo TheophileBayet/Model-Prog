@@ -11,7 +11,7 @@ private:
     PhilipsWaveModel(Dvector windDirection, double intensity, Dvector wave, double waveHeight, double waveLength);
     PhilipsWaveModel(const PhilipsWaveModel& pw);
     ~PhilipsWaveModel();
-
+    Dvector fft(Dvector x);
 
 
 
