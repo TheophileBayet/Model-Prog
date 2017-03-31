@@ -58,7 +58,7 @@ Height::Height(const Height& h)
 
 Height::~Height()
 {
-  vect.~Dvector();
+  //vect.~Dvector();
 }
 
 int Height::getDimX()
@@ -73,7 +73,7 @@ int Height::getDimY()
 
 double Height::operator () (int i, int j) const
 {
-  return this->vect(i*dimx,j);
+  return this->vect(i,j,dimx);
 }
 
 void Height::set (int i, int j, double val)

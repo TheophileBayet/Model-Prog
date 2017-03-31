@@ -68,20 +68,20 @@ double  Dvector::operator () (int i) const
   return vect[i];
 }
 
-double  Dvector::operator () (int i, int return_im) const
+double  Dvector::operator () (int i, bool return_im) const
 {
   assert(i>=0 && i<dim);
-  if (return_im = 1){
+  if (return_im == true){
     return im[i];
   }
   return vect[i];
 }
 
-double Dvector::operator () (int i, int j){
-  if(i+j>dim){
+double Dvector::operator () (int i, int j,int dimx) const{
+  if(i*dimx+j>dim){
     std::cerr<<"ERR : Dvector::operator () :: indice out of bounds"<<std::endl;
   }
-  return(this->vect[i+j]);
+  return(this->vect[i*dimx+j]);
 }
 
 void Dvector::display(std::ostream& str)
