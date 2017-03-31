@@ -75,3 +75,8 @@ double Height::operator () (int i, int j) const
 {
   return this->vect(i*dimx,j);
 }
+
+void Height::set (int i, int j, double val)
+{
+  this->vect.set(i,j,this->dimx,val);
+}

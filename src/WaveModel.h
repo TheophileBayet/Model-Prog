@@ -14,7 +14,7 @@ class WaveModel
     double waveLength;
     double waveHeight;
   public:
-    //WaveModel();
+    WaveModel();
     WaveModel(Dvector windDirection, double intensity, Dvector wave, double waveHeight, double waveLength);
     WaveModel(const WaveModel& w);
     ~WaveModel();

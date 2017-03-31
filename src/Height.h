@@ -21,5 +21,7 @@ class Height
     int getDimY();
     // Renvoie valeur hauteur du point;
     double operator () (int i, int j) const;
+    //Modifie la hauteur d'un point
+    void set (int i, int j, double val);
 };
 #endif

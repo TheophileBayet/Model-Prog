@@ -1,4 +1,5 @@
 #include "GerstnerWave.h"
+#include "math.h"
 
 GerstnerWave::GerstnerWave(const GerstnerWave& gw)
 {
@@ -38,8 +39,8 @@ Dvector GerstnerWave::getDirection()
   return this->seed;
 }*/
 
-double GerstnerWave::operator ()(double x, double y)
+double GerstnerWave::operator ()(const double x,const double y, const int t)
 {
   assert(y != 0);
-  return this->amplitude * x/y;
+  return this->amplitude * x/y * sin(t);
 }

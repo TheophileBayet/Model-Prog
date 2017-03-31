@@ -1,6 +1,14 @@
 #include "WaveModel.h"
 #include "math.h"
 
+WaveModel::WaveModel()
+{
+  this->windDirection = Dvector();
+  this->intensity = 0.0;
+  this->wave = Dvector();
+  this->waveHeight = 0.0;
+  this->waveLength = 0.0;
+}
 WaveModel::WaveModel(Dvector windDirection, double intensity, Dvector wave, double waveHeight, double waveLength)
 {
   this->windDirection = windDirection;

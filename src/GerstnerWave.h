@@ -18,7 +18,7 @@ class GerstnerWave
     double getFreq();
     Dvector getDirection();
 
-    double operator ()(double x, double y);
+    double operator ()(double x, double y, int time);
 
 };
 #endif
