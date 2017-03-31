@@ -24,8 +24,8 @@ class Dvector
       Dvector(int dim, double init=0.0);
       ~Dvector();
       double operator () (int i) const;
-      double  operator () (int i, int return_im) const;
-      double operator () (int i, int j);
+      double  operator () (int i, bool return_im) const;
+      double operator () (int i, int j,int dimx) const;
       void display(std::ostream& str);
       int size();
       void fillRandomly();
