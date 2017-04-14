@@ -2,6 +2,9 @@
 #include "../src/Dvector.h"
 #include "../src/Height.h"
 #include "../src/WaveModel.h"
+#include "../src/GerstnerWave.h"
+#include "../src/PhilipsWaveModel.h"
+#include "../src/Ocean.h"
 
 
 class WavesTest: public ::testing::Test {
@@ -15,7 +18,7 @@ class WavesTest: public ::testing::Test {
   }
 };
 
-TEST_F(WavesTest,constructorsAndAccessors){
+TEST_F(WavesTest,constructorsAndAccessors_Height){
 
 
   // TESTS HEIGHT
@@ -37,6 +40,9 @@ TEST_F(WavesTest,constructorsAndAccessors){
     EXPECT_EQ(10,h5(1,1));
 
  // FIN TESTS HEIGHT
+ }
+
+TEST_F(WavesTest,constructorsAndAccessors_WaveModel){
 
  // TESTS WAVEMODEL
     Dvector vect1(3,2);
@@ -49,21 +55,54 @@ TEST_F(WavesTest,constructorsAndAccessors){
     EXPECT_EQ(10.0,wm2->getIntensity());
     EXPECT_EQ(10.0,wm2->getWaveHeight());
     EXPECT_EQ(10.0,wm2->getWaveLength());
-    WaveModel wm3(vect1,5.0,vect2,5.0,5.0);
-    EXPECT_EQ(5.0,wm3.getIntensity());
-    EXPECT_EQ(5.0,wm3.getWaveHeight());
-    EXPECT_EQ(5.0,wm3.getWaveLength());
-    /*WaveModel wm4(wm3);
-    EXPECT_EQ(5.0,wm4.getIntensity());
-    EXPECT_EQ(5.0,wm4.getWaveHeight());
-    EXPECT_EQ(5.0,wm4.getWaveLength());
-    /*WaveModel wm5(*wm1);
-    EXPECT_EQ(10.0,wm5.getIntensity());
-    EXPECT_EQ(10.0,wm5.getWaveHeight());
-    EXPECT_EQ(10.0,wm5.getWaveLength());
-  */
+
  // FIN TESTS WAVEMODEL
 
+}
+
+
+TEST_F(WavesTest,constructorsAndAccessors_GerstnerWave){
+
+  Dvector vect1(3,2);
+  Dvector vect2(5,5);
+
+  GerstnerWave *gw1 = new GerstnerWave(5.0,vect1,1.0,0.5);
+  EXPECT_EQ(5.0,gw1->getAmplitude());
+  EXPECT_EQ(1.0,gw1->getPhase());
+  EXPECT_EQ(0.5,gw1->getFreq());
+  GerstnerWave *gw2 = new GerstnerWave(*gw1);
+  EXPECT_EQ(5.0,gw2->getAmplitude());
+  EXPECT_EQ(1.0,gw2->getPhase());
+  EXPECT_EQ(0.5,gw2->getFreq());
+
+}
+
+
+TEST_F(WavesTest,constructors_PhilipsWaveModel){
+  // DEBUT DES TESTS PHILIPSWAVEMODEL
+
+  Dvector wind(5,5);
+  Dvector wave(6,6);
+
+  PhilipsWaveModel *pw1 = new PhilipsWaveModel(wind,5.0,wave,10.0,15.0);
+
+
+  PhilipsWaveModel *pw2 = new PhilipsWaveModel(*pw1);
+
+  // FIN DES TESTS PHILIPSWAVEMODEL
+}
+
+
+
+TEST_F(WavesTest,constructorsAndAccessors_Ocean){
+    // DEBUT DES TESTS OCEAN
+
+    Dvector vect1(3,2);
+    Dvector vect2(3,3);
+    WaveModel *wm1 = new WaveModel(vect1,10.0,vect2,10.0,10.0);
+
+
+    // FIN DES TESTS OCEAN
 }
 
 

@@ -11,7 +11,7 @@ Dvector::Dvector(int dim, double init)
   this->dim=dim;
   this->vect = new double[dim];
   this->im = new double[dim];
-  for(int i=0;i<this->dim;i++){
+  for(int i=0;i<this->dim;i++){ 
     this->vect[i]=init;
     this->im[i]=init;
   }

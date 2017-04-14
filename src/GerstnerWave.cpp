@@ -9,6 +9,15 @@ GerstnerWave::GerstnerWave(const GerstnerWave& gw)
   this->direction =Dvector(gw.direction);
 }
 
+GerstnerWave::GerstnerWave(double amplitude, Dvector direction, double phase, double freq){
+  this->amplitude= amplitude;
+  this->freq=freq;
+  this->phase=phase;
+  this->direction= Dvector(direction);
+
+
+}
+
 GerstnerWave::~GerstnerWave()
 {
   delete [] &direction;
