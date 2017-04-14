@@ -15,6 +15,10 @@ class Ocean
     Height Hauteur;
     WaveModel Model;
     double* vertices;
+    void gl_initY(int x);
+    void gl_initX(int y);
+    void gl_X(int y);
+    void gl_Y(int x);
   public :
     Ocean(int Length, int Width,const int Nx,const int Ny, WaveModel Model);
     ~Ocean();
