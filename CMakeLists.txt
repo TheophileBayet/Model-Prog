@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g")
 
 include_directories(../src)
 enable_testing ()
-# Télécharge googletest au moment de la configureation
+# Télécharge googletest au moment de la configuration
 configure_file(CMakeLists.txt.in
                googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .

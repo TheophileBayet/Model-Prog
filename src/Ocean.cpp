@@ -10,7 +10,7 @@ Ocean::Ocean(const int Length,const int Width,const int Nx,const int Ny, WaveMod
   assert(Nx != 0); assert(Ny != 0);
   this->Hauteur = Height(Nx, Ny, 0.0);
   this->Model = Model;
-  this->vertices = new double[Nx][Ny];
+  this->vertices = new double[Nx*Ny];
 }
 
 Ocean::~Ocean()
