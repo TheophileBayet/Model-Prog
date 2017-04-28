@@ -40,14 +40,17 @@ TEST_F(WavesTest,constructorsAndAccessors_Height){
     EXPECT_EQ(10,h5(1,1));
 
  // FIN TESTS HEIGHT
+  h1->~Height();
+  h2->~Height();
+  //free(h2);
  }
 
 TEST_F(WavesTest,constructorsAndAccessors_WaveModel){
 
  // TESTS WAVEMODEL
-    Dvector vect1(3,2);
-    Dvector vect2(3,3);
-    WaveModel *wm1 = new WaveModel(vect1,10.0,vect2,10.0,10.0);
+    Dvector *vect1= new Dvector(3,2);
+    Dvector *vect2= new Dvector(3,3);
+    WaveModel *wm1 = new WaveModel(*vect1,10.0,*vect2,10.0,10.0);
     EXPECT_EQ(10.0,wm1->getIntensity());
     EXPECT_EQ(10.0,wm1->getWaveHeight());
     EXPECT_EQ(10.0,wm1->getWaveLength());
@@ -57,7 +60,8 @@ TEST_F(WavesTest,constructorsAndAccessors_WaveModel){
     EXPECT_EQ(10.0,wm2->getWaveLength());
 
  // FIN TESTS WAVEMODEL
-
+  //wm1->~WaveModel();
+  //wm2->~WaveModel();
 }
 
 
@@ -75,6 +79,9 @@ TEST_F(WavesTest,constructorsAndAccessors_GerstnerWave){
   EXPECT_EQ(1.0,gw2->getPhase());
   EXPECT_EQ(0.5,gw2->getFreq());
 
+  // FIN DES TESTS GESTERNWAVE
+  //free(gw1);
+  //free(gw2);
 }
 
 
@@ -90,6 +97,8 @@ TEST_F(WavesTest,constructors_PhilipsWaveModel){
   PhilipsWaveModel *pw2 = new PhilipsWaveModel(*pw1);
 
   // FIN DES TESTS PHILIPSWAVEMODEL
+  //free(pw1);
+  //free(pw2);
 }
 
 
@@ -100,9 +109,10 @@ TEST_F(WavesTest,constructorsAndAccessors_Ocean){
     Dvector vect1(3,2);
     Dvector vect2(3,3);
     WaveModel *wm1 = new WaveModel(vect1,10.0,vect2,10.0,10.0);
-
+    //Ocean *oc = new Ocean(5,5,5,5,*wm1);
 
     // FIN DES TESTS OCEAN
+    //free(wm1);
 }
 
 

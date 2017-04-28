@@ -103,7 +103,7 @@ TEST_F(DvectorTest,operators){
     EXPECT_EQ(fa,eq);
     eq = vect1==vect1;
     EXPECT_EQ(tr,eq);
-
+    vect5->~Dvector();
 }
 
 int main(int argc, char **argv) {

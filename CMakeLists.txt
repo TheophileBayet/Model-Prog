@@ -27,4 +27,5 @@ include_directories(${gtest_SOURCE_DIR}/include)
 
 add_subdirectory(src)
 add_subdirectory(tests)
+add_subdirectory(doc)
 link_directories(lib/${CMAKE_BUILD_TYPE})

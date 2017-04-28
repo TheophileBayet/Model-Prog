@@ -7,7 +7,6 @@ project(Vector)
 
 set(LIBRARY_OUTPUT_PATH lib/${CMAKE_BUILD_TYPE})
 
-
 #Configuration de la bibliothèque
 
 file(
