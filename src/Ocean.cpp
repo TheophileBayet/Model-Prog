@@ -25,16 +25,32 @@ void Ocean::generateHeight(double h)
   this->Hauteur = Height(this->Length, this->Width, h);
 }
 
-void Ocean::compute(int time)
+void Ocean::compute()
 {
   for (int i = 0; i < this->Nx; i++){
     for (int j = 0; j < this->Ny; j++){
-      double val = this->Model(i,j,time);
+      double val = this->Model(i,j,this->time);
       this->Hauteur.set(i,j,val);
     }
   }
 }
 
+int Ocean::get_lx(){
+  return Length;
+}
+
+
+int Ocean::get_ly(){
+  return Width;
+}
+
+int Ocean::getNx(){
+  return Nx;
+}
+
+int Ocean::getNy(){
+  return Ny;
+}
 
 //TODO : NO Sé ... A revoir
 void Ocean::gl_vertices()
@@ -87,4 +103,39 @@ void Ocean::gl_Y(int x)
     this->vertices[3*y +1] = this->Hauteur(y,x);
   }
   this->vertices[3*this->Ny +1] = this->Hauteur(0,x);
+}
+
+
+
+
+
+void Ocean::init_gl_VertexArrayX(const int y, double* const vertices) const {
+  for(int x=0 ; x<Nx ; x++) {
+    vertices[3*x]   = (Length/Nx)*x;
+    vertices[3*x+2] = (Width/Ny)*y;
+  }
+  vertices[3*Nx]   = Length;
+  vertices[3*Nx+2] = (Width/Ny)*y;
+}
+
+void Ocean::init_gl_VertexArrayY(const int x, double* const vertices) const {
+  for(int y=0 ; y<Ny ; y++) {
+    vertices[3*y]   = (Length/Nx)*x;
+    vertices[3*y+2] = (Width/Ny)*y;
+  }
+  vertices[3*Ny]   = (Length/Nx)*x;
+  vertices[3*Ny+2] = Width;
+}
+
+void Ocean::gl_VertexArrayX(const int y, double* const vertices) const {
+  for(int x=0 ; x<Nx ; x++) {
+    vertices[3*x+1] = pow(-1, x+y)*Hauteur(y,x);
+  }
+  vertices[3*Nx+1] = pow(-1, Nx+y)*Hauteur(y,0);
+}
+void Ocean::gl_VertexArrayY(const int x, double* const vertices) const {
+  for(int y=0 ; y<Ny ; y++) {
+    vertices[3*y+1] = Hauteur(y,x);
+  }
+  vertices[3*Ny+1]  = Hauteur(0,x);
 }

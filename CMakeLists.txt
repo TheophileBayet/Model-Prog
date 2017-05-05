@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8.11)
 
 project(lab1)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -lglut -lGLU -lGL")
 
 
 include_directories(../src)
@@ -28,4 +28,5 @@ include_directories(${gtest_SOURCE_DIR}/include)
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(doc)
+add_subdirectory(visu)
 link_directories(lib/${CMAKE_BUILD_TYPE})

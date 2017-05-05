@@ -1,13 +1,4 @@
-
-cmake_minimum_required(VERSION 2.6)
-
-#Configuration du projet
-
-project(Vector)
-
 set(LIBRARY_OUTPUT_PATH lib/${CMAKE_BUILD_TYPE})
-
-
 #Configuration de la bibliothèque
 
 file(
@@ -22,10 +13,18 @@ file(
 
 add_library(
 
-        vector
+        visu
 
         SHARED
 
         ${source_files}
 
 )
+
+add_executable(launch main.cxx)
+target_link_libraries(launch vector visu)
+add_test(launch launch)
+
+
+add_custom_target(simu COMMAND ${CMAKE_CTEST_COMMAND}
+                  DEPENDS launch)
