@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Compte Rendu - Projet Modélisation et Programmation C++}
+\author{BAYET Théophile, MOUNE Paul}
+\date{May 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Ce document est le compte-rendu du projet de modélisation et programmation C++. Il regroupe les réponses aux questions des
+différents TP ainsi que nos commentaires sur notre implémentation et diverses remarques. \\
+L'objectif de ce projet est de modéliser et visualiser un océan.
+
+\vspace{1cm}
+
+\section{TP1}
+
+L'objectif de ce TP est d'implémenter une classe Dvector qui sera ensuite utiliser dans notre modèle pour stocker les différentes hauteurs des points. \\
+
+Nous avons donc créer plusieurs constructeurs ainsi que le destructeur. On retrouve le constructeur par défaut mais aussi un constructeur par recopie et un constructeur par lecture de fichier.
+
+Nous avons aussi implémenter une méthode $display$ qui permet d'afficher sur la sortie standard l'objet de la classe Dvector.
+
+\vspace{0.5cm}
+\subsection{Question 1 :}
+
+Considérons le code : \\ \\ $Dvector$ $x;$ \\ $x = Dvector(3, 1.);$ \\ \\
+
+Ici, on construit d'abord un élément de la classe Dvector nommé x sans l'initialiser.
+On utilise ensuite l'opérateur = qui a été redéfini pour la classe Dvector et qui va assigner à x une valeur.
+
+\\ \\
+
+En revanche, si l'on écrit directement : \\ \\ $Dvector x = Dvector(3, 1.);$ \\ \\
+
+On construit directement le Dvector x avec une valeur en utilisant le constructeur adéquat que l'on a défini.
+
+\subsection{Question 4 :}
+
+\section{TP2}
+
+Le but de ce TP est d'enrichir notre classe Dvector créee lors du premier TP en implémentant différentes méthodes.
+
+D'une part, il s'agit d'implémenter les opérateurs classiques pour qu'ils fonctionnent sur notre classe, comme par exemple l'addition avec un autre Dvector ou encore la multiplication par un scalaire.
+
+Nous créons aussi un opérateur d'accession à un élément du Dvector. De plus, nous surchargeons les opérateurs d'affectation et de test d'égalité.
+
+\section{TP3}
+
+\section{TP4}
+
+\section{TP5}
+
+\section{Commentaires}
+
+
+\end{document}
