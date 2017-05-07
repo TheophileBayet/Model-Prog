@@ -3,11 +3,13 @@
 
 \title{Compte Rendu - Projet Modélisation et Programmation C++}
 \author{BAYET Théophile, MOUNE Paul}
-\date{May 2017}
+\date{Mai 2017}
 
 \begin{document}
 
 \maketitle
+
+\vspace{1.5cm}
 
 \section{Introduction}
 
@@ -33,8 +35,6 @@ Considérons le code : \\ \\ $Dvector$ $x;$ \\ $x = Dvector(3, 1.);$ \\ \\
 Ici, on construit d'abord un élément de la classe Dvector nommé x sans l'initialiser.
 On utilise ensuite l'opérateur = qui a été redéfini pour la classe Dvector et qui va assigner à x une valeur.
 
-\\ \\
-
 En revanche, si l'on écrit directement : \\ \\ $Dvector x = Dvector(3, 1.);$ \\ \\
 
 On construit directement le Dvector x avec une valeur en utilisant le constructeur adéquat que l'on a défini.
@@ -49,11 +49,51 @@ D'une part, il s'agit d'implémenter les opérateurs classiques pour qu'ils fonc
 
 Nous créons aussi un opérateur d'accession à un élément du Dvector. De plus, nous surchargeons les opérateurs d'affectation et de test d'égalité.
 
+\subsection{Questions :}
+
+
 \section{TP3}
+
+Dans ce TP, nous allons déclarer plusieurs classes qui vont être utilisées pour modéliser l'océan.
+
+Dans un premier temps, il nous faut une classe $Height$ qui va utiliser la classe Dvector que nous avons implémentée avant. Cette classe contiendra l'ensemble des valeurs des hauteurs claculées dans la "boîte" qui servira d'océan.
+
+Ainsi, la classe Height est composée de 2 entiers, les dimensions de la boîte, et d'un Dvector de taille $DimX * DimY$.
+
+Nous créons les différents constructeurs qui vont nous être utiles ainsi que le destructeur.
+
+Les différentes méthodes implémentées pour cette classe sont les accesseurs aux dimensions et qu'un opérateur () permettant d'accéder à la valeur de la hauteur stockée en $(i,j)$.
+
+De plus, nous avons besoin d'une méthode $set$ qui modifie la valeur de la hauteur en un endroit particulier.
+
+Dans un second temps,  nous allons définir une classe mère, $WaveModel$, qui va nous servir pour implémenter l'effet des vagues dans l'océan. Plus tard, plusieurs classes hériterons de celle-ci.
+
+Il ne faut pas que les différents paramètres de cette classe soient modifiables, ils sont donc privées et nous ne définissons pas de fonctions pour $set$.
+
+En revanche, nous devons définir des accesseurs ainsi que plusieurs types de constructeurs.
+
+De plus, nous implémentons un opérateur () qui permet de considérer cette classe comme un foncteur.
+
+\subsection{Questions :}
 
 \section{TP4}
 
-\section{TP5}
+L'objectif de ce TP est de trouver et implémenter un nouveau modèle de visualisation de la houle dans l'océan.
+
+Pour cela, nous allons utiliser une représentation spectrale du champ de hauteur. Nous créons donc une classe $PhillipsWaveModel$ qui dérive directement de la classe $WaveModel$ créer auparavant.
+
+Pour cette représentation, il faut implémenter la transformée de Fourier ainsi que son inverse et l'appliquer sur notre champs de hauteurs.
+
+On implémente donc la Fast Fourier Transform, FFT, avec l'algorithme de Cooley-Tukey. Pour pouvoir l'appliquer sur notre champ de hauteurs, il faut modifier la classe $Dvector$ que nous avons implémenté pour qu'elle gère une partie imaginaire.
+
+
+Maintenant que la classe est créée et l'implémentation de la FFT faite, il nous faut maitenant créer la classe Océan qui va nous servir pour regrouper tout le travail fait et permettre la visualisation de notre modèle.
+
+On lui donne en paramètres les différentes dimensions nécessaires à la modélisation et à la visualisation, ainsi que le temps, le modèle de houle utilisé avec un paramètre de la classe $WaveModel$ et un Dvector qui contient les hauteurs de la houle.
+
+
+
+\section{Visualisation et résultats}
 
 \section{Commentaires}
 
