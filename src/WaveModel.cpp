@@ -29,8 +29,8 @@ WaveModel::WaveModel(const WaveModel& wave)
 
 WaveModel::~WaveModel()
 {
-  this->wave.~Dvector();
-  this->windDirection.~Dvector();
+  //this->wave.~Dvector();
+  //this->windDirection.~Dvector();
   //delete [] &wave;
   //delete [] &windDirection;
 }

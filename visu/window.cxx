@@ -75,7 +75,7 @@ namespace Window {
 
   void draw_ocean() {
     // Réalise effectivement l'étape de calcul
-    ocean->compute();
+    ocean->compute(t);
 
     // Impose la couleur d'affichage de la grille
     glColor3ub(82, 184, 255);

@@ -11,7 +11,6 @@ class Ocean
     int Width;
     int Nx;
     int Ny;
-    int time;
     Height Hauteur;
     WaveModel Model;
     double* vertices;
@@ -23,7 +22,7 @@ class Ocean
     Ocean(int Length, int Width,const int Nx,const int Ny, WaveModel Model);
     ~Ocean();
     void generateHeight(double h);
-    void compute();
+    void compute(int time);
     int get_ly();
     int get_lx();
     int getNx();

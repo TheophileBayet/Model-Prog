@@ -22,14 +22,14 @@ Ocean::~Ocean()
 
 void Ocean::generateHeight(double h)
 {
-  this->Hauteur = Height(this->Length, this->Width, h);
+  this->Hauteur = Height(this->Nx, this->Ny, h);
 }
 
-void Ocean::compute()
+void Ocean::compute(int time)
 {
   for (int i = 0; i < this->Nx; i++){
     for (int j = 0; j < this->Ny; j++){
-      double val = this->Model(i,j,this->time);
+      double val = this->Model(i,j,time);
       this->Hauteur.set(i,j,val);
     }
   }
