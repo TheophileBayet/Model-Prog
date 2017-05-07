@@ -1,5 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[francais]{babel}
 
 \title{Compte Rendu - Projet Modélisation et Programmation C++}
 \author{BAYET Théophile, MOUNE Paul}
@@ -8,6 +10,10 @@
 \begin{document}
 
 \maketitle
+
+\vspace{1.5cm}
+
+\tableofcontents
 
 \vspace{1.5cm}
 
@@ -28,7 +34,8 @@ Nous avons donc créer plusieurs constructeurs ainsi que le destructeur. On retr
 Nous avons aussi implémenter une méthode $display$ qui permet d'afficher sur la sortie standard l'objet de la classe Dvector.
 
 \vspace{0.5cm}
-\subsection{Question 1 :}
+
+\subsection{Questions :}
 
 Considérons le code : \\ \\ $Dvector$ $x;$ \\ $x = Dvector(3, 1.);$ \\ \\
 
@@ -39,7 +46,8 @@ En revanche, si l'on écrit directement : \\ \\ $Dvector x = Dvector(3, 1.);$ \\
 
 On construit directement le Dvector x avec une valeur en utilisant le constructeur adéquat que l'on a défini.
 
-\subsection{Question 4 :}
+
+\vspace{1cm}
 
 \section{TP2}
 
@@ -49,8 +57,11 @@ D'une part, il s'agit d'implémenter les opérateurs classiques pour qu'ils fonc
 
 Nous créons aussi un opérateur d'accession à un élément du Dvector. De plus, nous surchargeons les opérateurs d'affectation et de test d'égalité.
 
+\vspace{0.5cm}
+
 \subsection{Questions :}
 
+\vspace{1cm}
 
 \section{TP3}
 
@@ -74,13 +85,33 @@ En revanche, nous devons définir des accesseurs ainsi que plusieurs types de co
 
 De plus, nous implémentons un opérateur () qui permet de considérer cette classe comme un foncteur.
 
-\subsection{Questions :}
+Enfin, nous implémentons une première modélisation de vague avec la classe $GernsterWaveModel$ qui dérive donc de la classe $WaveModel$.
+
+\vspace{0.5cm}
+
+\subsection{Question 2:}
+
+Nous avons donc, dans notre implémentation de la modélisation de l'océan, créer plusieurs classes. Comme il existe plusieurs façons de représenter les vagues, la classe $WaveModel$ va être dérivée pour créer plusieurs modèles.
+
+D'une part, on aura la classe $GernsterWaveModel$, qui héritera donc de la classe $WaveModel$. D'autre part, on aura aussi la classe $PhilipsWaveModel$, qui sera décrite dans la prochaine section, qui héritera de la même manière de la classe $WaveModel$.
+
+De plus, la classe $Height$ qui va être utilisée dans nos modèles de vagues va contenir un tableau à 2 dimensions qui sera implémenté grâce à la classe $Dvector$ que nous avons créée au début.
+
+\vspace{0.5cm}
+
+\subsection{Question 3:}
+
+Pour gérer l'apparence des vagues modélisées dans notre océan, plusieurs paramètres vont influencer la violence de la houle.
+
+Ainsi, dans la classe $WaveModel$, nous pourrons contrôler la houle grâce aux paramètres d'intensité et de hauteur maximum de vague.
+
+\vspace{1cm}
 
 \section{TP4}
 
 L'objectif de ce TP est de trouver et implémenter un nouveau modèle de visualisation de la houle dans l'océan.
 
-Pour cela, nous allons utiliser une représentation spectrale du champ de hauteur. Nous créons donc une classe $PhillipsWaveModel$ qui dérive directement de la classe $WaveModel$ créer auparavant.
+Pour cela, nous allons utiliser une représentation spectrale du champ de hauteur. Nous créons donc une classe $PhilipsWaveModel$ qui dérive directement de la classe $WaveModel$ créer auparavant.
 
 Pour cette représentation, il faut implémenter la transformée de Fourier ainsi que son inverse et l'appliquer sur notre champs de hauteurs.
 
@@ -91,9 +122,34 @@ Maintenant que la classe est créée et l'implémentation de la FFT faite, il no
 
 On lui donne en paramètres les différentes dimensions nécessaires à la modélisation et à la visualisation, ainsi que le temps, le modèle de houle utilisé avec un paramètre de la classe $WaveModel$ et un Dvector qui contient les hauteurs de la houle.
 
+\vspace{1cm}
+
+\section{Tests}
+
+Toutes les classes et leurs méthodes qui ont été présentées ici ont été testées par plusieurs tests pertinents afin de veiller à ce que notre implémentation soit correcte.
+
+Ces tests vont en effet tester pour toutes les classes implémentées les constructeurs, les operateurs et les méthodes propres à chaque classe.
+
+Nous avons dans un premier temps un fichier de tests pour la classe $Dvector$.
+
+\vspace{0.5cm}
+
+\includegraphics[scale=0.7]{./res/Test_Dvector.png}
+
+\vspace{0.5cm}
+
+De même, nous avons un fichier de tests pour les classes Height, Ocean et les différentes implémentations des vagues.
+
+\vspace{0.5cm}
+
+\includegraphics[scale=0.7]{./res/Test_Waves.png}
+
+\vspace{1cm}
 
 
 \section{Visualisation et résultats}
+
+\vspace{1cm}
 
 \section{Commentaires}
 
